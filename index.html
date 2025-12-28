@@ -18,7 +18,21 @@
 body {
     background: var(--branco);
     color: var(--azul);
+    padding: 0;
 }
+
+@media (max-width: 576px) {
+    body {
+        padding: 0.75rem;
+    }
+	
+    .group,
+    .culto-header {
+        margin-left: 2px;
+        margin-right: 2px;
+    }
+}
+
 
 .filter-box {
     border: 1px solid var(--bege);
