@@ -1,350 +1,437 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title>Escala de Cultos - Janeiro 2026</title>
-
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <style>
-        body {
-            background-color: #f5f7fa;
-        }
-        .card {
-            border-radius: 12px;
-        }
-    </style>
-</head>
-<body>
-
-<div class="container mt-5">
-    <div class="card shadow">
-        <div class="card-body">
-
-            <h3 class="mb-4 text-center">📅 Escala de Cultos - Janeiro 2026</h3>
-
-            <div class="row mb-3">
-                <div class="col-md-6">
-                    <label class="form-label">Integrante</label>
-                    <input type="text" id="filtroIntegrante" class="form-control" placeholder="Digite o nome do integrante">
-                </div>
-
-                <div class="col-md-6">
-                    <label class="form-label">Culto</label>
-                    <input type="text" id="filtroCulto" class="form-control" placeholder="Digite o nome do culto">
-                </div>
-            </div>
-
-            <div class="table-responsive">
-                <table class="table table-striped table-hover">
-                    <thead class="table-dark">
+   <head>
+      <meta charset="UTF-8">
+      <title>Escala do Louvor</title>
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+      <style>
+         /* Estilo geral da página */
+         body {
+         background-color: #f5f7fa;
+         }
+         /* Card principal */
+         .card {
+         border-radius: 12px;
+         }
+         /* Cards exibidos no celular */
+         .escala-card {
+         background: #ffffff;
+         border-radius: 12px;
+         padding: 1rem;
+         margin-bottom: 1rem;
+         box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+         }
+         .escala-card .data {
+         font-weight: bold;
+         font-size: 1rem;
+         }
+         .escala-card .culto {
+         color: #0d6efd;
+         font-weight: 500;
+         }
+         .escala-card .funcao {
+         font-size: 0.9rem;
+         color: #6c757d;
+         }
+      </style>
+   </head>
+   <body>
+      <div class="container mt-5">
+         <div class="card shadow">
+            <div class="card-body">
+               <h3 class="mb-4 text-center">📅 ADVEC Music Cataguases - Escala / 2026</h3>
+               <!-- Filtros -->
+               <div class="row mb-3 g-3">
+                  <div class="col-12 col-md-4">
+                     <label class="form-label">Integrante</label>
+                     <input type="text" id="filtroIntegrante" class="form-control" placeholder="Digite o nome">
+                  </div>
+                  <div class="col-12 col-md-4">
+                     <label class="form-label">Culto</label>
+                     <input type="text" id="filtroCulto" class="form-control" placeholder="Digite o culto">
+                  </div>
+                  <div class="col-12 col-md-4">
+                     <label class="form-label">Mês</label>
+                     <select id="filtroMes" class="form-select">
+                        <option value="">Todos</option>
+                        <option value="01">Janeiro</option>
+                        <option value="02">Fevereiro</option>
+                        <option value="03">Março</option>
+                        <option value="04">Abril</option>
+                        <option value="05">Maio</option>
+                        <option value="06">Junho</option>
+                        <option value="07">Julho</option>
+                        <option value="08">Agosto</option>
+                        <option value="09">Setembro</option>
+                        <option value="10">Outubro</option>
+                        <option value="11">Novembro</option>
+                        <option value="12">Dezembro</option>
+                     </select>
+                  </div>
+               </div>
+               <!-- Tabela (Desktop) -->
+               <div class="table-responsive d-none d-md-block">
+                  <table class="table table-striped table-hover">
+                     <thead class="table-dark">
                         <tr>
-                            <th>Data</th>
-                            <th>Culto</th>
-                            <th>Integrante</th>
-                            <th>Função</th>
+                           <th>Data</th>
+                           <th>Culto</th>
+                           <th>Horário</th>
+                           <th>Integrante</th>
+                           <th>Função</th>
                         </tr>
-                    </thead>
-                    <tbody id="tabelaEscala">
-
-        <tr>
-            <td>04/01/2026</td>
-            <td>Santa Ceia</td>
-            <td>Folga para todos</td>
-            <td>Folga para todos</td>
-        </tr>
-    
-        <tr>
-            <td>06/01/2026</td>
-            <td>Profetizando 2026</td>
-            <td>Nwohaynne</td>
-            <td>Vocalista (Solo - Ministro de Louvor)</td>
-        </tr>
-    
-        <tr>
-            <td>06/01/2026</td>
-            <td>Profetizando 2026</td>
-            <td>Sarah</td>
-            <td>Vocalista (Solo - Ministro de Louvor)</td>
-        </tr>
-    
-        <tr>
-            <td>06/01/2026</td>
-            <td>Profetizando 2026</td>
-            <td>Denise</td>
-            <td>Vocalista (Apoio - Backing Vocal)</td>
-        </tr>
-    
-        <tr>
-            <td>06/01/2026</td>
-            <td>Profetizando 2026</td>
-            <td>Isabella</td>
-            <td>Vocalista (Apoio - Backing Vocal)</td>
-        </tr>
-    
-        <tr>
-            <td>06/01/2026</td>
-            <td>Profetizando 2026</td>
-            <td>Lara</td>
-            <td>Vocalista (Apoio - Backing Vocal)</td>
-        </tr>
-    
-        <tr>
-            <td>06/01/2026</td>
-            <td>Profetizando 2026</td>
-            <td>Cristiano</td>
-            <td>Vocalista (Apoio - Backing Vocal)</td>
-        </tr>
-    
-        <tr>
-            <td>06/01/2026</td>
-            <td>Profetizando 2026</td>
-            <td>Ronny</td>
-            <td>Vocalista (Apoio - Backing Vocal)</td>
-        </tr>
-    
-        <tr>
-            <td>06/01/2026</td>
-            <td>Profetizando 2026</td>
-            <td>Igor</td>
-            <td>Músico Instrumental (Bateria)</td>
-        </tr>
-    
-        <tr>
-            <td>06/01/2026</td>
-            <td>Profetizando 2026</td>
-            <td>Daniel</td>
-            <td>Músico Instrumental (Guitarra)</td>
-        </tr>
-    
-        <tr>
-            <td>06/01/2026</td>
-            <td>Profetizando 2026</td>
-            <td>Washington</td>
-            <td>Músico Instrumental (Violão)</td>
-        </tr>
-    
-        <tr>
-            <td>06/01/2026</td>
-            <td>Profetizando 2026</td>
-            <td>Márcio</td>
-            <td>Músico Instrumental (Baixo)</td>
-        </tr>
-    
-        <tr>
-            <td>06/01/2026</td>
-            <td>Profetizando 2026</td>
-            <td>Jonatan</td>
-            <td>Músico Instrumental (Teclado)</td>
-        </tr>
-    
-        <tr>
-            <td>07/01/2026</td>
-            <td>Profetizando 2026</td>
-            <td>Sérgio</td>
-            <td>Vocalista (Solo - Ministro de Louvor)</td>
-        </tr>
-    
-        <tr>
-            <td>07/01/2026</td>
-            <td>Profetizando 2026</td>
-            <td>Isabella</td>
-            <td>Vocalista (Solo - Ministro de Louvor)</td>
-        </tr>
-    
-        <tr>
-            <td>07/01/2026</td>
-            <td>Profetizando 2026</td>
-            <td>Stefanea</td>
-            <td>Vocalista (Apoio - Backing Vocal)</td>
-        </tr>
-    
-        <tr>
-            <td>07/01/2026</td>
-            <td>Profetizando 2026</td>
-            <td>Débora</td>
-            <td>Vocalista (Apoio - Backing Vocal)</td>
-        </tr>
-    
-        <tr>
-            <td>07/01/2026</td>
-            <td>Profetizando 2026</td>
-            <td>Fabiana</td>
-            <td>Vocalista (Apoio - Backing Vocal)</td>
-        </tr>
-    
-        <tr>
-            <td>07/01/2026</td>
-            <td>Profetizando 2026</td>
-            <td>Lara</td>
-            <td>Vocalista (Apoio - Backing Vocal)</td>
-        </tr>
-    
-        <tr>
-            <td>07/01/2026</td>
-            <td>Profetizando 2026</td>
-            <td>Denise</td>
-            <td>Vocalista (Apoio - Backing Vocal)</td>
-        </tr>
-    
-        <tr>
-            <td>07/01/2026</td>
-            <td>Profetizando 2026</td>
-            <td>Igor</td>
-            <td>Músico Instrumental (Bateria)</td>
-        </tr>
-    
-        <tr>
-            <td>07/01/2026</td>
-            <td>Profetizando 2026</td>
-            <td>Sérgio</td>
-            <td>Músico Instrumental (Guitarra)</td>
-        </tr>
-    
-        <tr>
-            <td>07/01/2026</td>
-            <td>Profetizando 2026</td>
-            <td>Washington</td>
-            <td>Músico Instrumental (Violão)</td>
-        </tr>
-    
-        <tr>
-            <td>07/01/2026</td>
-            <td>Profetizando 2026</td>
-            <td>Daniel</td>
-            <td>Músico Instrumental (Baixo)</td>
-        </tr>
-    
-        <tr>
-            <td>07/01/2026</td>
-            <td>Profetizando 2026</td>
-            <td>Jonatan</td>
-            <td>Músico Instrumental (Teclado)</td>
-        </tr>
-    
-        <tr>
-            <td>08/01/2026</td>
-            <td>Profetizando 2026</td>
-            <td>Luciana</td>
-            <td>Vocalista (Solo - Ministro de Louvor)</td>
-        </tr>
-    
-        <tr>
-            <td>08/01/2026</td>
-            <td>Profetizando 2026</td>
-            <td>Ronny</td>
-            <td>Vocalista (Solo - Ministro de Louvor)</td>
-        </tr>
-    
-        <tr>
-            <td>08/01/2026</td>
-            <td>Profetizando 2026</td>
-            <td>Sérgio</td>
-            <td>Vocalista (Apoio - Backing Vocal)</td>
-        </tr>
-    
-        <tr>
-            <td>08/01/2026</td>
-            <td>Profetizando 2026</td>
-            <td>Sarah</td>
-            <td>Vocalista (Apoio - Backing Vocal)</td>
-        </tr>
-    
-        <tr>
-            <td>08/01/2026</td>
-            <td>Profetizando 2026</td>
-            <td>Débora</td>
-            <td>Vocalista (Apoio - Backing Vocal)</td>
-        </tr>
-    
-        <tr>
-            <td>08/01/2026</td>
-            <td>Profetizando 2026</td>
-            <td>Isabella</td>
-            <td>Vocalista (Apoio - Backing Vocal)</td>
-        </tr>
-    
-        <tr>
-            <td>08/01/2026</td>
-            <td>Profetizando 2026</td>
-            <td>Fabiana</td>
-            <td>Vocalista (Apoio - Backing Vocal)</td>
-        </tr>
-    
-        <tr>
-            <td>08/01/2026</td>
-            <td>Profetizando 2026</td>
-            <td>Igor</td>
-            <td>Músico Instrumental (Bateria)</td>
-        </tr>
-    
-        <tr>
-            <td>08/01/2026</td>
-            <td>Profetizando 2026</td>
-            <td>Sérgio</td>
-            <td>Músico Instrumental (Guitarra)</td>
-        </tr>
-    
-        <tr>
-            <td>08/01/2026</td>
-            <td>Profetizando 2026</td>
-            <td>Washington</td>
-            <td>Músico Instrumental (Violão)</td>
-        </tr>
-    
-        <tr>
-            <td>08/01/2026</td>
-            <td>Profetizando 2026</td>
-            <td>Márcio</td>
-            <td>Músico Instrumental (Baixo)</td>
-        </tr>
-    
-        <tr>
-            <td>08/01/2026</td>
-            <td>Profetizando 2026</td>
-            <td>Jonatan</td>
-            <td>Músico Instrumental (Teclado)</td>
-        </tr>
-    
-                    </tbody>
-                </table>
+                     </thead>
+                     <tbody id="tabelaEscala">
+                        <tr>
+                           <td>04/01/2026</td>
+                           <td>Santa Ceia</td>
+                           <td>19:30</td>
+                           <td> - </td>
+                           <td> - </td>
+                        </tr>
+                        <tr>
+                           <td>06/01/2026</td>
+                           <td>Profetizando 2026</td>
+                           <td>19:30</td>
+                           <td>Nwohaynne</td>
+                           <td>Vocalista (Solo - Ministro de Louvor)</td>
+                        </tr>
+                        <tr>
+                           <td>06/01/2026</td>
+                           <td>Profetizando 2026</td>
+                           <td>19:30</td>
+                           <td>Sarah</td>
+                           <td>Vocalista (Solo - Ministro de Louvor)</td>
+                        </tr>
+                        <tr>
+                           <td>06/01/2026</td>
+                           <td>Profetizando 2026</td>
+                           <td>19:30</td>
+                           <td>Denise</td>
+                           <td>Vocalista (Apoio - Backing Vocal)</td>
+                        </tr>
+                        <tr>
+                           <td>06/01/2026</td>
+                           <td>Profetizando 2026</td>
+                           <td>19:30</td>
+                           <td>Isabella</td>
+                           <td>Vocalista (Apoio - Backing Vocal)</td>
+                        </tr>
+                        <tr>
+                           <td>06/01/2026</td>
+                           <td>Profetizando 2026</td>
+                           <td>19:30</td>
+                           <td>Lara</td>
+                           <td>Vocalista (Apoio - Backing Vocal)</td>
+                        </tr>
+                        <tr>
+                           <td>06/01/2026</td>
+                           <td>Profetizando 2026</td>
+                           <td>19:30</td>
+                           <td>Cristiano</td>
+                           <td>Vocalista (Apoio - Backing Vocal)</td>
+                        </tr>
+                        <tr>
+                           <td>06/01/2026</td>
+                           <td>Profetizando 2026</td>
+                           <td>19:30</td>
+                           <td>Ronny</td>
+                           <td>Vocalista (Apoio - Backing Vocal)</td>
+                        </tr>
+                        <tr>
+                           <td>06/01/2026</td>
+                           <td>Profetizando 2026</td>
+                           <td>19:30</td>
+                           <td>Igor</td>
+                           <td>Músico Instrumental (Bateria)</td>
+                        </tr>
+                        <tr>
+                           <td>06/01/2026</td>
+                           <td>Profetizando 2026</td>
+                           <td>19:30</td>
+                           <td>Daniel</td>
+                           <td>Músico Instrumental (Guitarra)</td>
+                        </tr>
+                        <tr>
+                           <td>06/01/2026</td>
+                           <td>Profetizando 2026</td>
+                           <td>19:30</td>
+                           <td>Washington</td>
+                           <td>Músico Instrumental (Violão)</td>
+                        </tr>
+                        <tr>
+                           <td>06/01/2026</td>
+                           <td>Profetizando 2026</td>
+                           <td>19:30</td>
+                           <td>Márcio</td>
+                           <td>Músico Instrumental (Baixo)</td>
+                        </tr>
+                        <tr>
+                           <td>06/01/2026</td>
+                           <td>Profetizando 2026</td>
+                           <td>19:30</td>
+                           <td>Jonatan</td>
+                           <td>Músico Instrumental (Teclado)</td>
+                        </tr>
+                        <tr>
+                           <td>07/01/2026</td>
+                           <td>Profetizando 2026</td>
+                           <td>19:30</td>
+                           <td>Sérgio</td>
+                           <td>Vocalista (Solo - Ministro de Louvor)</td>
+                        </tr>
+                        <tr>
+                           <td>07/01/2026</td>
+                           <td>Profetizando 2026</td>
+                           <td>19:30</td>
+                           <td>Isabella</td>
+                           <td>Vocalista (Solo - Ministro de Louvor)</td>
+                        </tr>
+                        <tr>
+                           <td>07/01/2026</td>
+                           <td>Profetizando 2026</td>
+                           <td>19:30</td>
+                           <td>Stefanea</td>
+                           <td>Vocalista (Apoio - Backing Vocal)</td>
+                        </tr>
+                        <tr>
+                           <td>07/01/2026</td>
+                           <td>Profetizando 2026</td>
+                           <td>19:30</td>
+                           <td>Débora</td>
+                           <td>Vocalista (Apoio - Backing Vocal)</td>
+                        </tr>
+                        <tr>
+                           <td>07/01/2026</td>
+                           <td>Profetizando 2026</td>
+                           <td>19:30</td>
+                           <td>Fabiana</td>
+                           <td>Vocalista (Apoio - Backing Vocal)</td>
+                        </tr>
+                        <tr>
+                           <td>07/01/2026</td>
+                           <td>Profetizando 2026</td>
+                           <td>19:30</td>
+                           <td>Lara</td>
+                           <td>Vocalista (Apoio - Backing Vocal)</td>
+                        </tr>
+                        <tr>
+                           <td>07/01/2026</td>
+                           <td>Profetizando 2026</td>
+                           <td>19:30</td>
+                           <td>Denise</td>
+                           <td>Vocalista (Apoio - Backing Vocal)</td>
+                        </tr>
+                        <tr>
+                           <td>07/01/2026</td>
+                           <td>Profetizando 2026</td>
+                           <td>19:30</td>
+                           <td>Igor</td>
+                           <td>Músico Instrumental (Bateria)</td>
+                        </tr>
+                        <tr>
+                           <td>07/01/2026</td>
+                           <td>Profetizando 2026</td>
+                           <td>19:30</td>
+                           <td>Sérgio</td>
+                           <td>Músico Instrumental (Guitarra)</td>
+                        </tr>
+                        <tr>
+                           <td>07/01/2026</td>
+                           <td>Profetizando 2026</td>
+                           <td>19:30</td>
+                           <td>Washington</td>
+                           <td>Músico Instrumental (Violão)</td>
+                        </tr>
+                        <tr>
+                           <td>07/01/2026</td>
+                           <td>Profetizando 2026</td>
+                           <td>19:30</td>
+                           <td>Daniel</td>
+                           <td>Músico Instrumental (Baixo)</td>
+                        </tr>
+                        <tr>
+                           <td>07/01/2026</td>
+                           <td>Profetizando 2026</td>
+                           <td>19:30</td>
+                           <td>Jonatan</td>
+                           <td>Músico Instrumental (Teclado)</td>
+                        </tr>
+                        <tr>
+                           <td>08/01/2026</td>
+                           <td>Profetizando 2026</td>
+                           <td>19:30</td>
+                           <td>Luciana</td>
+                           <td>Vocalista (Solo - Ministro de Louvor)</td>
+                        </tr>
+                        <tr>
+                           <td>08/01/2026</td>
+                           <td>Profetizando 2026</td>
+                           <td>19:30</td>
+                           <td>Ronny</td>
+                           <td>Vocalista (Solo - Ministro de Louvor)</td>
+                        </tr>
+                        <tr>
+                           <td>08/01/2026</td>
+                           <td>Profetizando 2026</td>
+                           <td>19:30</td>
+                           <td>Sérgio</td>
+                           <td>Vocalista (Apoio - Backing Vocal)</td>
+                        </tr>
+                        <tr>
+                           <td>08/01/2026</td>
+                           <td>Profetizando 2026</td>
+                           <td>19:30</td>
+                           <td>Sarah</td>
+                           <td>Vocalista (Apoio - Backing Vocal)</td>
+                        </tr>
+                        <tr>
+                           <td>08/01/2026</td>
+                           <td>Profetizando 2026</td>
+                           <td>19:30</td>
+                           <td>Débora</td>
+                           <td>Vocalista (Apoio - Backing Vocal)</td>
+                        </tr>
+                        <tr>
+                           <td>08/01/2026</td>
+                           <td>Profetizando 2026</td>
+                           <td>19:30</td>
+                           <td>Isabella</td>
+                           <td>Vocalista (Apoio - Backing Vocal)</td>
+                        </tr>
+                        <tr>
+                           <td>08/01/2026</td>
+                           <td>Profetizando 2026</td>
+                           <td>19:30</td>
+                           <td>Fabiana</td>
+                           <td>Vocalista (Apoio - Backing Vocal)</td>
+                        </tr>
+                        <tr>
+                           <td>08/01/2026</td>
+                           <td>Profetizando 2026</td>
+                           <td>19:30</td>
+                           <td>Igor</td>
+                           <td>Músico Instrumental (Bateria)</td>
+                        </tr>
+                        <tr>
+                           <td>08/01/2026</td>
+                           <td>Profetizando 2026</td>
+                           <td>19:30</td>
+                           <td>Sérgio</td>
+                           <td>Músico Instrumental (Guitarra)</td>
+                        </tr>
+                        <tr>
+                           <td>08/01/2026</td>
+                           <td>Profetizando 2026</td>
+                           <td>19:30</td>
+                           <td>Washington</td>
+                           <td>Músico Instrumental (Violão)</td>
+                        </tr>
+                        <tr>
+                           <td>08/01/2026</td>
+                           <td>Profetizando 2026</td>
+                           <td>19:30</td>
+                           <td>Márcio</td>
+                           <td>Músico Instrumental (Baixo)</td>
+                        </tr>
+                        <tr>
+                           <td>08/01/2026</td>
+                           <td>Profetizando 2026</td>
+                           <td>19:30</td>
+                           <td>Jonatan</td>
+                           <td>Músico Instrumental (Teclado)</td>
+                        </tr>
+                     </tbody>
+                  </table>
+               </div>
+               <!-- Cards (Celular) -->
+               <div id="cardsContainer" class="d-md-none"></div>
             </div>
-
-        </div>
-    </div>
-</div>
-
-<script>
-    // Campos de filtro
-    const filtroIntegrante = document.getElementById("filtroIntegrante");
-    const filtroCulto = document.getElementById("filtroCulto");
-
-    // Linhas da tabela
-    const linhas = document.querySelectorAll("#tabelaEscala tr");
-
-    // Função de filtro
-    function filtrarTabela() {
-        const textoIntegrante = filtroIntegrante.value.toLowerCase();
-        const textoCulto = filtroCulto.value.toLowerCase();
-
-        linhas.forEach(linha => {
-            const culto = linha.children[1].textContent.toLowerCase();
-            const integrante = linha.children[2].textContent.toLowerCase();
-
-            const mostrar =
-                integrante.includes(textoIntegrante) &&
-                culto.includes(textoCulto);
-
-            linha.style.display = mostrar ? "" : "none";
-        });
-    }
-
-    // Eventos
-    filtroIntegrante.addEventListener("keyup", filtrarTabela);
-    filtroCulto.addEventListener("keyup", filtrarTabela);
-</script>
-
-</body>
+         </div>
+      </div>
+      <script>
+         // Captura os campos de filtro
+         const filtroIntegrante = document.getElementById("filtroIntegrante");
+         const filtroCulto = document.getElementById("filtroCulto");
+         const filtroMes = document.getElementById("filtroMes");
+         
+         // Captura linhas da tabela e container de cards
+         const linhas = document.querySelectorAll("#tabelaEscala tr");
+         const cardsContainer = document.getElementById("cardsContainer");
+         
+         // Verifica se está em tela de celular
+         function isMobile() {
+             return window.innerWidth < 768;
+         }
+         
+         // Renderiza os cards no celular
+         function renderizarCards(linhasVisiveis) {
+             cardsContainer.innerHTML = "";
+         
+             linhasVisiveis.forEach(linha => {
+         
+                 // Ordem: Data, Culto, Horário, Integrante, Função
+                 const data = linha.children[0].textContent;
+                 const culto = linha.children[1].textContent;
+                 const horario = linha.children[2].textContent;
+                 const integrante = linha.children[3].textContent;
+                 const funcao = linha.children[4].textContent;
+         
+                 const card = document.createElement("div");
+                 card.className = "escala-card";
+         
+                 card.innerHTML = `
+                     <div class="data">${data}</div>
+                     <div class="culto">${culto}</div>
+                     <div><strong>Horário:</strong> ${horario}</div>
+                     <div><strong>${integrante}</strong></div>
+                     <div class="funcao">${funcao}</div>
+                 `;
+         
+                 cardsContainer.appendChild(card);
+             });
+         }
+         
+         // Função principal de filtro
+         function filtrarTabela() {
+             const txtIntegrante = filtroIntegrante.value.toLowerCase();
+             const txtCulto = filtroCulto.value.toLowerCase();
+             const mes = filtroMes.value;
+         
+             const linhasVisiveis = [];
+         
+             linhas.forEach(linha => {
+                 const data = linha.children[0].textContent;
+                 const culto = linha.children[1].textContent.toLowerCase();
+                 const integrante = linha.children[3].textContent.toLowerCase();
+                 const mesLinha = data.split("/")[1];
+         
+                 const mostrar =
+                     integrante.includes(txtIntegrante) &&
+                     culto.includes(txtCulto) &&
+                     (mes === "" || mesLinha === mes);
+         
+                 linha.style.display = mostrar ? "" : "none";
+         
+                 if (mostrar) {
+                     linhasVisiveis.push(linha);
+                 }
+             });
+         
+             // Se for celular, mostra cards
+             if (isMobile()) {
+                 renderizarCards(linhasVisiveis);
+             }
+         }
+         
+         // Eventos
+         filtroIntegrante.addEventListener("keyup", filtrarTabela);
+         filtroCulto.addEventListener("keyup", filtrarTabela);
+         filtroMes.addEventListener("change", filtrarTabela);
+         window.addEventListener("resize", filtrarTabela);
+         
+         // Inicialização
+         filtrarTabela();
+      </script>
+   </body>
 </html>
