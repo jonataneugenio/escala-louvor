@@ -78,6 +78,31 @@ body {
     white-space: nowrap;       /* Tudo na mesma linha */
 }
 
+.culto-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Desktop */
+.culto-header h5,
+.culto-header .info {
+    white-space: nowrap;
+}
+
+/* Mobile */
+@media (max-width: 576px) {
+    .culto-header {
+        flex-wrap: wrap;          /* permite quebrar linha */
+        align-items: flex-start;
+    }
+
+    .culto-header .info {
+        white-space: normal;      /* permite quebra */
+        font-size: 1rem;          /* mantém legível */
+    }
+}
+
 .expand-icon {
     font-size: 1.4rem;
     color: var(--azul);
