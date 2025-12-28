@@ -1,1 +1,1 @@
-# escala_louvor
+# escala-louvor
