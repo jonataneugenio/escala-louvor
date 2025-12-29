@@ -1,525 +1,759 @@
-<!DOCTYPE html>
+
+<!doctype html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<title>Escala do Louvor 2026</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8" />
+    <title>Escala do Louvor 2026</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet" />
 
-<style>
-:root {
-    --azul: #0D1B62;
-    --bege: #DAD7CE;
-    --branco: #FFFFFF;
-}
+    <style>
+        :root {
+            --azul: #0d1b62;
+            --bege: #dad7ce;
+            --branco: #ffffff;
+        }
 
-body {
-    background: var(--branco);
-    color: var(--azul);
-    padding: 0;
-}
+        body {
+            background: var(--branco);
+            color: var(--azul);
+            padding: 0;
+        }
 
-@media (max-width: 576px) {
-    body {
-        padding: 0.75rem;
-    }
-	
-    .group,
-    .culto-header {
-        margin-left: 2px;
-        margin-right: 2px;
-    }
-}
+        @media (max-width: 576px) {
+            body { padding: 0.75rem; }
+            .group, .culto-header { margin-left: 2px; margin-right: 2px; }
+        }
 
-
-.filter-box {
-    border: 1px solid var(--bege);
-    border-radius: 2px;
-    padding: 15px;
-    background: var(--branco);
-}
-
-.group-row {
-    border-bottom: 1px solid var(--bege);
-    padding: 18px 0;
-}
-
-.group-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
-}
-
-.culto-header {
-    display: flex;
-    align-items: center;
-    gap: 14px;                 /* Espaço entre título e info */
-    border-left: 6px solid var(--azul);
-    padding-left: 12px;
-    flex-wrap: nowrap;         /* Impede quebra de linha */
-}
-
-.culto-header h5 {
-    margin: 0;
-    font-weight: 700;
-    color: var(--azul);
-    white-space: nowrap;       /* Impede quebra do título */
-}
-
-.culto-header .info {
-    font-size: 1rem;
-    color: #555;
-    display: flex;
-    align-items: center;
-    gap: 10px;                 /* Espaço entre data e hora */
-    white-space: nowrap;       /* Tudo na mesma linha */
-}
-
-.culto-header {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-/* Desktop */
-.culto-header h5,
-.culto-header .info {
-    white-space: nowrap;
-}
-
-/* Mobile */
-@media (max-width: 576px) {
-    .culto-header {
-        flex-wrap: wrap;          /* permite quebrar linha */
-        align-items: flex-start;
-    }
-
-    .culto-header .info {
-        white-space: normal;      /* permite quebra */
-        font-size: 1rem;          /* mantém legível */
-    }
-}
-
-.expand-icon {
-    font-size: 1.4rem;
-    color: var(--azul);
-}
-
-.subgroup {
-    margin-top: 18px;
-    padding-left: 14px;
-    border-left: 3px solid var(--bege);
-}
-
-.subgroup-title {
-    margin-bottom: 10px;
-    font-size: 0.95rem;   /* diminui o título */
-    font-weight: 600;
-    margin-bottom: 0.4rem;
-    color: var(--azul);
-}
-
-.member {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 0.85rem;
-    line-height: 1.4;
-    margin-bottom: 0.25rem;
-}
-
-.member i {
-    font-size: 1.1rem;
-}
-
-.song {
-    margin-top: 0.5rem;
-    font-size: 0.9rem;
-	margin-bottom: 12px;
-}
-
-.song a {
-    text-decoration: none;
-    color: var(--azul);
-    font-weight: 600;
-}
-
-.song.observation {
-	background-color: #f8f9fa;
-    border-left: 4px solid var(--azul);
-    padding: 0.75rem;
-	margin-top: 1.25rem;
-}
-
-
-.form-label {
-    font-weight: 600; /* semi-bold */
-}
-
-
-</style>
+        .filter-box { border: 1px solid var(--bege); border-radius: 2px; padding: 15px; background: var(--branco); }
+        .group-row { border-bottom: 1px solid var(--bege); padding: 18px 0; }
+        .group-header { display: flex; justify-content: space-between; align-items: center; cursor: pointer; }
+        .culto-header { display: flex; align-items: center; gap: 14px; border-left: 6px solid var(--azul); padding-left: 12px; flex-wrap: nowrap; }
+        .culto-header h5 { margin: 0; font-weight: 700; color: var(--azul); white-space: nowrap; }
+        .culto-header .info { font-size: 1rem; color: #555; display: flex; align-items: center; gap: 10px; white-space: nowrap; }
+        .expand-icon { font-size: 1.4rem; color: var(--azul); }
+        .subgroup { margin-top: 18px; padding-left: 14px; border-left: 3px solid var(--bege); }
+        .subgroup-title { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.4rem; color: var(--azul); }
+        .member { display: flex; align-items: center; gap: 6px; font-size: 0.85rem; line-height: 1.4; margin-bottom: 0.25rem; }
+        .member i { font-size: 1.1rem; }
+        .song { margin-top: 0.5rem; font-size: 0.9rem; margin-bottom: 12px; }
+        .song a { text-decoration: none; color: var(--azul); font-weight: 600; }
+        .song.observation { background-color: #f8f9fa; border-left: 4px solid var(--azul); padding: 0.75rem; margin-top: 1.25rem; }
+        .form-label { font-weight: 600; }
+        @media (max-width: 576px) {
+            .culto-header { flex-wrap: wrap; align-items: flex-start; }
+            .culto-header .info { white-space: normal; font-size: 1rem; }
+        }
+    </style>
 </head>
-
 <body>
-<div class="container my-4">
+    <div class="container my-4">
+        <h4 class="text-center mb-4">🎶 Escala do Ministério de Louvor - 2026</h4>
 
-<h4 class="text-center mb-4">🎶 Escala do Ministério de Louvor - 2026</h4>
+        <!-- FILTROS -->
+        <div class="filter-box mb-4">
+            <div class="row g-3">
+                <div class="col-md-4">
+                    <label class="form-label">Integrante:</label>
+                    <input id="filtroIntegrante" class="form-control" placeholder="Nome do integrante" />
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label">Culto:</label>
+                    <input id="filtroCulto" class="form-control" placeholder="Nome do culto" />
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label">Mês:</label>
+                    <select id="filtroMes" class="form-select">
+                        <option value="">Todos</option>
+                        <option value="01">Janeiro</option>
+                    </select>
+                </div>
+                <div class="mt-3">
+                    <button class="btn btn-outline-primary" onclick="exportarPDF()">
+                        <i class="bi bi-file-earmark-pdf"></i> Exportar PDF
+                    </button>
+                </div>
+            </div>
+        </div>
 
-<!-- FILTROS -->
-<div class="filter-box mb-4">
-    <div class="row g-3">
-        <div class="col-md-4">
-            <label class="form-label">Integrante:</label>
-            <input id="filtroIntegrante" class="form-control" placeholder="Nome do integrante">
-        </div>
-        <div class="col-md-4">
-            <label class="form-label">Culto:</label>
-            <input id="filtroCulto" class="form-control" placeholder="Nome do culto">
-        </div>
-        <div class="col-md-4">
-            <label class="form-label">Mês:</label>
-            <select id="filtroMes" class="form-select">
-                <option value="">Todos</option>
-                <option value="01">Janeiro</option>
-            </select>
-        </div>
-		<div class="mt-3">
-			<button class="btn btn-outline-primary" onclick="exportarPDF()">
-				<i class="bi bi-file-earmark-pdf"></i> Exportar PDF
-			</button>
-		</div>
+        <!-- GRUPOS -->
+     
 
+            <!-- 04/01 -->
+            <div class="group-row" data-culto="Santa Ceia" data-integrantes="" data-mes="01">
+                <div class="group-header" data-bs-toggle="collapse" data-bs-target="#d04">
+                    <div class="culto-header">
+                        <h5>Santa Ceia</h5>
+                        <div class="info">
+                            <i class="bi bi-calendar-event"></i> 04/01/2026 &nbsp; <i class="bi bi-clock"></i> 09:30 |
+                            18:30
+                        </div>
+                    </div>
+                    <i class="bi bi-chevron-down expand-icon"></i>
+                </div>
+
+                <div class="collapse" id="d04">
+                    <div class="subgroup">
+                        <div class="subgroup-title">Informações</div>
+                        Transmissão pelo Youtube
+                    </div>
+                </div>
+            </div>
+
+            <!-- 06/01 -->
+            <div
+                class="group-row"
+                data-culto="Profetizando 2026"
+                data-integrantes="nwohaynne sarah denise isabella lara cristiano ronny igor daniel washington márcio jonatan"
+                data-mes="01"
+            >
+                <div class="group-header" data-bs-toggle="collapse" data-bs-target="#d06">
+                    <div class="culto-header">
+                        <h5>Profetizando 2026</h5>
+                        <div class="info">
+                            <i class="bi bi-calendar-event"></i> 06/01/2026 &nbsp; <i class="bi bi-clock"></i> 19:30
+                        </div>
+                    </div>
+                    <i class="bi bi-chevron-down expand-icon"></i>
+                </div>
+
+                <div class="collapse" id="d06">
+                    <div class="subgroup">
+                        <div class="subgroup-title">Escala</div>
+
+                        <div class="member">🎤 Nwohaynne, Sarah — Vocalista (Solo - Ministro de Louvor)</div>
+                        <div class="member">
+                            🎤 Denise, Isabella, Lara, Cristiano, Ronny — Vocalista (Apoio - Backing Vocal)
+                        </div>
+
+                        <div class="member">🥁 Igor — Músico Instrumental (Bateria)</div>
+                        <div class="member">🎸 Daniel — Músico Instrumental (Guitarra)</div>
+                        <div class="member">🎸 Washington — Músico Instrumental (Violão)</div>
+                        <div class="member">🎸 Márcio — Músico Instrumental (Baixo)</div>
+                        <div class="member">🎹 Jonatan — Músico Instrumental (Teclado)</div>
+                    </div>
+
+                    <div class="subgroup">
+                        <div class="subgroup-title">Repertório</div>
+
+                        <div class="song">
+                            🎵 <strong>Estamos de Pé</strong><br />
+                            🎙️ Nwohaynne<br />
+                            ▶️
+                            <a href="https://www.youtube.com/live/49H8nvLK09c?si=9rWlh5x8d4jAueeA" target="_blank"
+                                >Assistir no YouTube</a
+                            >
+                            - a partir do minuto 22:45
+                        </div>
+
+                        <div class="song">
+                            🎵 <strong>Escape + Nunca Pare de Lutar + Com Muito Louvor</strong><br />
+                            🎙️ Sarah<br />
+                            ▶️
+                            <a href="https://www.youtube.com/live/svAWjYpSy1A?si=Fq7pc7qAQcl8rN9-" target="_blank"
+                                >Assistir no YouTube</a
+                            >
+                            - a partir do minuto 34:00
+                        </div>
+
+                        <div class="song observation">
+                            <strong>
+                                <i class="bi bi-exclamation-circle-fill"></i> Luciana irá cantar separadamente:</strong
+                            ><br /><br />
+
+                            🎤 <strong>Todo Poderoso</strong><br />
+                            ▶️
+                            <a
+                                href="https://www.youtube.com/watch?v=jkp2ZO5cQME&list=RDjkp2ZO5cQME&start_radio=1"
+                                target="_blank"
+                            >
+                                Assistir no YouTube </a
+                            ><br /><br />
+
+                            🎤 <strong>Com Muito Louvor</strong><br />
+                            ▶️
+                            <a
+                                href="https://www.youtube.com/watch?v=yk72I2Jpj78&list=RDyk72I2Jpj78&start_radio=1"
+                                target="_blank"
+                            >
+                                Assistir no YouTube
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 07/01 -->
+            <div
+                class="group-row"
+                data-culto="Profetizando 2026"
+                data-integrantes="sérgio isabella stefanea débora fabiana lara denise igor washington jonatan"
+                data-mes="01"
+            >
+                <div class="group-header" data-bs-toggle="collapse" data-bs-target="#d07">
+                    <div class="culto-header">
+                        <h5>Profetizando 2026</h5>
+                        <div class="info">
+                            <i class="bi bi-calendar-event"></i> 07/01/2026 &nbsp; <i class="bi bi-clock"></i> 19:30
+                        </div>
+                    </div>
+                    <i class="bi bi-chevron-down expand-icon"></i>
+                </div>
+
+                <div class="collapse" id="d07">
+                    <div class="subgroup">
+                        <div class="subgroup-title">Escala</div>
+
+                        <div class="member">🎤 Sérgio, Isabella — Vocalista (Solo - Ministro de Louvor)</div>
+                        <div class="member">
+                            🎤 Denise, Débora, Fabiana, Lara, Stefanea — Vocalista (Apoio - Backing Vocal)
+                        </div>
+
+                        <div class="member">🥁 Igor — Músico Instrumental (Bateria)</div>
+                        <div class="member">🎸 Sérgio — Músico Instrumental (Guitarra)</div>
+                        <div class="member">🎸 Washington — Músico Instrumental (Violão)</div>
+                        <div class="member">🎸 Daniel — Músico Instrumental (Baixo)</div>
+                        <div class="member">🎹 Jonatan — Músico Instrumental (Teclado)</div>
+                    </div>
+
+                    <div class="subgroup">
+                        <div class="subgroup-title">Repertório</div>
+
+                        <div class="song">
+                            🎵 <strong>Jesus, Filho de Deus</strong><br />
+                            🎙️ Sérgio<br />
+                            ▶️
+                            <a
+                                href="https://www.youtube.com/watch?v=jz3UGe2tNAE&list=RDjz3UGe2tNAE&start_radio=1"
+                                target="_blank"
+                                >Assistir no YouTube</a
+                            >
+                        </div>
+
+                        <div class="song">
+                            🎵
+                            <strong
+                                >Se Manifestará + A Terra Clama + Deixa o Céu Descer (Pai Nosso) + Promessas Antigas ( A
+                                Glória desta última casa)</strong
+                            ><br />
+                            🎙️ Isabella<br />
+                            ▶️
+                            <a href="https://www.youtube.com/live/49H8nvLK09c?si=9rWlh5x8d4jAueeA" target="_blank"
+                                >Assistir no YouTube</a
+                            >
+                            - a partir do minuto 29:00
+                        </div>
+
+                        <div class="song observation">
+                            <strong>
+                                <i class="bi bi-exclamation-circle-fill"></i> Márcio irá cantar separadamente:</strong
+                            ><br /><br />
+
+                            🎤 <strong>A Glória Desta Última Casa</strong><br />
+                            ▶️
+                            <a href="https://www.youtube.com/watch?v=1wXWLyDVn6M" target="_blank">
+                                Assistir no YouTube </a
+                            ><br /><br />
+
+                            🎤 <strong>Atráves do Louvor</strong><br />
+                            ▶️
+                            <a href="https://www.youtube.com/watch?v=wwYwr-XARSk" target="_blank">
+                                Assistir no YouTube
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 08/01 -->
+            <div
+                class="group-row"
+                data-culto="Profetizando 2026"
+                data-integrantes="luciana ronny sérgio sarah débora isabella fabiana igor washington márcio jonatan"
+                data-mes="01"
+            >
+                <div class="group-header" data-bs-toggle="collapse" data-bs-target="#d08">
+                    <div class="culto-header">
+                        <h5>Profetizando 2026</h5>
+                        <div class="info">
+                            <i class="bi bi-calendar-event"></i> 08/01/2026 &nbsp; <i class="bi bi-clock"></i> 19:30
+                        </div>
+                    </div>
+                    <i class="bi bi-chevron-down expand-icon"></i>
+                </div>
+
+                <div class="collapse" id="d08">
+                    <div class="subgroup">
+                        <div class="subgroup-title">Escala</div>
+
+                        <div class="member">🎤 Luciana, Ronny — Vocalista (Solo - Ministro de Louvor)</div>
+                        <div class="member">
+                            🎤 Sarah, Débora, Isabella, Fabiana — Vocalista (Apoio - Backing Vocal)
+                        </div>
+
+                        <div class="member">🥁 Igor — Músico Instrumental (Bateria)</div>
+                        <div class="member">🎸 Washington — Músico Instrumental (Guitarra)</div>
+                        <div class="member">🎸 Márcio — Músico Instrumental (Baixo)</div>
+                        <div class="member">🎹 Jonatan — Músico Instrumental (Teclado)</div>
+                    </div>
+
+                    <div class="subgroup">
+                        <div class="subgroup-title">Repertório</div>
+
+                        <div class="song">
+                            🎵 <strong>Deus de Obras Completas + Jeová Jireh</strong><br />
+                            🎙️ Luciana<br />
+                            ▶️
+                            <a href="https://youtu.be/1wXWLyDVn6M?si=5QS_OgSTNlSm7QGU" target="_blank"
+                                >Assistir no YouTube</a
+                            >
+                        </div>
+
+                        <div class="song">
+                            🎵 <strong>Toda Terra + Digno de Tudo</strong><br />
+                            🎙️ Ronny<br />
+                            ▶️
+                            <a href="https://youtu.be/7riqHpWjWV0?si=6voapGT0jgbYnPvn" target="_blank"
+                                >Assistir no YouTube</a
+                            >
+                        </div>
+
+                        <div class="song observation">
+                            <strong>
+                                <i class="bi bi-exclamation-circle-fill"></i> Denise irá cantar separadamente:</strong
+                            ><br /><br />
+
+                            🎤 <strong>Se Eu Não Te Ouvir</strong><br />
+                            ▶️
+                            <a
+                                href="https://www.youtube.com/watch?v=KXJpP0jd9Lk&list=RDKXJpP0jd9Lk&start_radio=1"
+                                target="_blank"
+                            >
+                                Assistir no YouTube </a
+                            ><br /><br />
+
+                            🎤 <strong>Eu Sou Teu Pai</strong><br />
+                            ▶️
+                            <a
+                                href="https://www.youtube.com/watch?v=kNJPalON82E&list=RDkNJPalON82E&start_radio=1"
+                                target="_blank"
+                            >
+                                Assistir no YouTube
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 11/01 -->
+            <div
+                class="group-row"
+                data-culto="Culto de Celebração"
+                data-integrantes="sérgio ronny isabella cristiano fabiana washington daniel márcio jonatan"
+                data-mes="01"
+            >
+                <div class="group-header" data-bs-toggle="collapse" data-bs-target="#d11">
+                    <div class="culto-header">
+                        <h5>Culto de Celebração</h5>
+                        <div class="info">
+                            <i class="bi bi-calendar-event"></i> 11/01/2026 &nbsp; <i class="bi bi-clock"></i> 09:30 |
+                            18:30
+                        </div>
+                    </div>
+                    <i class="bi bi-chevron-down expand-icon"></i>
+                </div>
+
+                <div class="collapse" id="d11">
+                    <div class="subgroup">
+                        <div class="subgroup-title">Escala</div>
+
+                        <div class="member">🎤 Sérgio — Vocalista (Solo - Ministro de Louvor)</div>
+                        <div class="member">🎤 Ronny — Vocalista (Solo - Ministro de Louvor)</div>
+                        <div class="member">🎤 Isabella — Vocalista (Apoio - Backing Vocal)</div>
+                        <div class="member">🎤 Cristiano (09:30) — Vocalista (Apoio - Backing Vocal)</div>
+                        <div class="member">🎤 Fabiana — Vocalista (Apoio - Backing Vocal)</div>
+
+                        <div class="member">🥁 Washington — Músico Instrumental (Bateria)</div>
+                        <div class="member">🎸 Sérgio — Músico Instrumental (Guitarra)</div>
+                        <div class="member">🎸 Márcio (09:30) — Músico Instrumental (Baixo)</div>
+                        <div class="member">🎸 Daniel (18:30) — Músico Instrumental (Baixo)</div>
+                        <div class="member">🎹 Jonatan — Músico Instrumental (Teclado)</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 13/01 -->
+            <div
+                class="group-row"
+                data-culto="EDP - Escola da Palavra"
+                data-integrantes="sarah isabella cristiano stefanea maria eduarda luciana lara márcio washington daniel isabella"
+                data-mes="01"
+            >
+                <div class="group-header" data-bs-toggle="collapse" data-bs-target="#d13">
+                    <div class="culto-header">
+                        <h5>EDP - Escola da Palavra</h5>
+                        <div class="info">
+                            <i class="bi bi-calendar-event"></i> 13/01/2026 &nbsp; <i class="bi bi-clock"></i> 19:30
+                        </div>
+                    </div>
+                    <i class="bi bi-chevron-down expand-icon"></i>
+                </div>
+
+                <div class="collapse" id="d13">
+                    <div class="subgroup">
+                        <div class="subgroup-title">Escala</div>
+
+                        <div class="member">🎤 Sarah — Vocalista (Solo - Ministro de Louvor)</div>
+                        <div class="member">🎤 Isabella — Vocalista (Solo - Ministro de Louvor)</div>
+                        <div class="member">🎤 Cristiano — Vocalista (Apoio - Backing Vocal)</div>
+                        <div class="member">🎤 Stefânea — Vocalista (Apoio - Backing Vocal)</div>
+                        <div class="member">🎤 Maria Eduarda — Vocalista (Apoio - Backing Vocal)</div>
+                        <div class="member">🎤 Luciana — Vocalista (Apoio - Backing Vocal)</div>
+                        <div class="member">🎤 Lara — Vocalista (Apoio - Backing Vocal)</div>
+
+                        <div class="member">🥁 Márcio — Músico Instrumental (Bateria)</div>
+                        <div class="member">🎸 Washington — Músico Instrumental (Guitarra)</div>
+                        <div class="member">🎸 Daniel — Músico Instrumental (Baixo)</div>
+                        <div class="member">🎹 Isabella — Músico Instrumental (Teclado)</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 15/01 -->
+            <div
+                class="group-row"
+                data-culto="Culto da Vitória"
+                data-integrantes="denise isabella sérgio luciana nwohaynne débora igor sérgio márcio isabella"
+                data-mes="01"
+            >
+                <div class="group-header" data-bs-toggle="collapse" data-bs-target="#d15">
+                    <div class="culto-header">
+                        <h5>Culto da Vitória</h5>
+                        <div class="info">
+                            <i class="bi bi-calendar-event"></i> 15/01/2026 &nbsp; <i class="bi bi-clock"></i> 19:30
+                        </div>
+                    </div>
+                    <i class="bi bi-chevron-down expand-icon"></i>
+                </div>
+
+                <div class="collapse" id="d15">
+                    <div class="subgroup">
+                        <div class="subgroup-title">Escala</div>
+
+                        <div class="member">🎤 Denise — Vocalista (Solo - Ministro de Louvor)</div>
+                        <div class="member">🎤 Isabella — Vocalista (Solo - Ministro de Louvor)</div>
+                        <div class="member">🎤 Sérgio — Vocalista (Apoio - Backing Vocal)</div>
+                        <div class="member">🎤 Luciana — Vocalista (Apoio - Backing Vocal)</div>
+                        <div class="member">🎤 Nwohaynne — Vocalista (Apoio - Backing Vocal)</div>
+                        <div class="member">🎤 Débora — Vocalista (Apoio - Backing Vocal)</div>
+
+                        <div class="member">🥁 Igor — Músico Instrumental (Bateria)</div>
+                        <div class="member">🎸 Sérgio — Músico Instrumental (Guitarra)</div>
+                        <div class="member">🎸 Márcio — Músico Instrumental (Baixo)</div>
+                        <div class="member">🎹 Isabella — Músico Instrumental (Teclado)</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 18/01 -->
+            <div
+                class="group-row"
+                data-culto="Culto de Celebração"
+                data-integrantes="denise luciana nwohaynne cristiano isabella sérgio igor sérgio washington jonatan"
+                data-mes="01"
+            >
+                <div class="group-header" data-bs-toggle="collapse" data-bs-target="#d18">
+                    <div class="culto-header">
+                        <h5>Culto de Celebração</h5>
+                        <div class="info">
+                            <i class="bi bi-calendar-event"></i> 18/01/2026 &nbsp; <i class="bi bi-clock"></i> 09:30 |
+                            18:30
+                        </div>
+                    </div>
+                    <i class="bi bi-chevron-down expand-icon"></i>
+                </div>
+
+                <div class="collapse" id="d18">
+                    <div class="subgroup">
+                        <div class="subgroup-title">Escala</div>
+
+                        <div class="member">🎤 Denise — Vocalista (Solo - Ministro de Louvor)</div>
+                        <div class="member">🎤 Luciana — Vocalista (Solo - Ministro de Louvor)</div>
+                        <div class="member">🎤 Nwohaynne — Vocalista (Apoio - Backing Vocal)</div>
+                        <div class="member">🎤 Cristiano (09:30) — Vocalista (Apoio - Backing Vocal)</div>
+                        <div class="member">🎤 Isabella — Vocalista (Apoio - Backing Vocal)</div>
+                        <div class="member">🎤 Sérgio — Vocalista (Apoio - Backing Vocal)</div>
+
+                        <div class="member">🥁 Igor — Músico Instrumental (Bateria)</div>
+                        <div class="member">🎸 Sérgio — Músico Instrumental (Guitarra)</div>
+                        <div class="member">🎸 Washington — Músico Instrumental (Baixo)</div>
+                        <div class="member">🎹 Jonatan — Músico Instrumental (Teclado)</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 20/01 -->
+            <div
+                class="group-row"
+                data-culto="Santa Ceia"
+                data-integrantes="ronny isabella denise sarah maria eduarda lara igor washington márcio jonatan"
+                data-mes="01"
+            >
+                <div class="group-header" data-bs-toggle="collapse" data-bs-target="#d20">
+                    <div class="culto-header">
+                        <h5>Santa Ceia</h5>
+                        <div class="info">
+                            <i class="bi bi-calendar-event"></i> 20/01/2026 &nbsp; <i class="bi bi-clock"></i> 19:30
+                        </div>
+                    </div>
+                    <i class="bi bi-chevron-down expand-icon"></i>
+                </div>
+
+                <div class="collapse" id="d20">
+                    <div class="subgroup">
+                        <div class="subgroup-title">Escala</div>
+
+                        <div class="member">🎤 Ronny — Vocalista (Solo - Ministro de Louvor)</div>
+                        <div class="member">🎤 Isabella — Vocalista (Solo - Ministro de Louvor)</div>
+                        <div class="member">🎤 Denise — Vocalista (Apoio - Backing Vocal)</div>
+                        <div class="member">🎤 Sarah — Vocalista (Apoio - Backing Vocal)</div>
+                        <div class="member">🎤 Maria Eduarda — Vocalista (Apoio - Backing Vocal)</div>
+                        <div class="member">🎤 Lara — Vocalista (Apoio - Backing Vocal)</div>
+
+                        <div class="member">🥁 Igor — Músico Instrumental (Bateria)</div>
+                        <div class="member">🎸 Washington — Músico Instrumental (Guitarra)</div>
+                        <div class="member">🎸 Márcio — Músico Instrumental (Baixo)</div>
+                        <div class="member">🎹 Jonatan — Músico Instrumental (Teclado)</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 22/01 -->
+            <div
+                class="group-row"
+                data-culto="Culto da Vitória"
+                data-integrantes="denise luciana ronny fabiana sérgio igor sérgio márcio jonatan"
+                data-mes="01"
+            >
+                <div class="group-header" data-bs-toggle="collapse" data-bs-target="#d22">
+                    <div class="culto-header">
+                        <h5>Culto da Vitória</h5>
+                        <div class="info">
+                            <i class="bi bi-calendar-event"></i> 22/01/2026 &nbsp; <i class="bi bi-clock"></i> 19:30
+                        </div>
+                    </div>
+                    <i class="bi bi-chevron-down expand-icon"></i>
+                </div>
+
+                <div class="collapse" id="d22">
+                    <div class="subgroup">
+                        <div class="subgroup-title">Escala</div>
+
+                        <div class="member">🎤 Denise — Vocalista (Solo - Ministro de Louvor)</div>
+                        <div class="member">🎤 Luciana — Vocalista (Solo - Ministro de Louvor)</div>
+                        <div class="member">🎤 Ronny — Vocalista (Apoio - Backing Vocal)</div>
+                        <div class="member">🎤 Fabiana — Vocalista (Apoio - Backing Vocal)</div>
+                        <div class="member">🎤 Sérgio — Vocalista (Apoio - Backing Vocal)</div>
+
+                        <div class="member">🥁 Igor — Músico Instrumental (Bateria)</div>
+                        <div class="member">🎸 Sérgio — Músico Instrumental (Guitarra)</div>
+                        <div class="member">🎸 Márcio — Músico Instrumental (Baixo)</div>
+                        <div class="member">🎹 Jonatan — Músico Instrumental (Teclado)</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 25/01 -->
+            <div
+                class="group-row"
+                data-culto="Culto de Celebração"
+                data-integrantes="isabella sérgio ronny cristiano fabiana washington sérgio márcio daniel isabella"
+                data-mes="01"
+            >
+                <div class="group-header" data-bs-toggle="collapse" data-bs-target="#d25">
+                    <div class="culto-header">
+                        <h5>Culto de Celebração</h5>
+                        <div class="info">
+                            <i class="bi bi-calendar-event"></i> 25/01/2026 &nbsp; <i class="bi bi-clock"></i> 09:30 |
+                            18:30
+                        </div>
+                    </div>
+                    <i class="bi bi-chevron-down expand-icon"></i>
+                </div>
+
+                <div class="collapse" id="d25">
+                    <div class="subgroup">
+                        <div class="subgroup-title">Escala</div>
+
+                        <div class="member">🎤 Isabella — Vocalista (Solo - Ministro de Louvor)</div>
+                        <div class="member">🎤 Sérgio — Vocalista (Solo - Ministro de Louvor)</div>
+                        <div class="member">🎤 Ronny — Vocalista (Apoio - Backing Vocal)</div>
+                        <div class="member">🎤 Cristiano (09:30) — Vocalista (Apoio - Backing Vocal)</div>
+                        <div class="member">🎤 Fabiana — Vocalista (Apoio - Backing Vocal)</div>
+
+                        <div class="member">🥁 Washington — Músico Instrumental (Bateria)</div>
+                        <div class="member">🎸 Sérgio — Músico Instrumental (Guitarra)</div>
+                        <div class="member">🎸 Márcio (09:30) — Músico Instrumental (Baixo)</div>
+                        <div class="member">🎸 Daniel (18:30) — Músico Instrumental (Baixo)</div>
+                        <div class="member">🎹 Isabella — Músico Instrumental (Teclado)</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 27/01 -->
+            <div
+                class="group-row"
+                data-culto="EDP - Escola da Palavra"
+                data-integrantes="isabella ronny luciana fabiana sarah stefanea lara márcio daniel washington isabella"
+                data-mes="01"
+            >
+                <div class="group-header" data-bs-toggle="collapse" data-bs-target="#d27">
+                    <div class="culto-header">
+                        <h5>EDP - Escola da Palavra</h5>
+                        <div class="info">
+                            <i class="bi bi-calendar-event"></i> 27/01/2026 &nbsp; <i class="bi bi-clock"></i> 19:30
+                        </div>
+                    </div>
+                    <i class="bi bi-chevron-down expand-icon"></i>
+                </div>
+
+                <div class="collapse" id="d27">
+                    <div class="subgroup">
+                        <div class="subgroup-title">Escala</div>
+
+                        <div class="member">🎤 Isabella — Vocalista (Solo - Ministro de Louvor)</div>
+                        <div class="member">🎤 Ronny — Vocalista (Solo - Ministro de Louvor)</div>
+                        <div class="member">🎤 Luciana — Vocalista (Apoio - Backing Vocal)</div>
+                        <div class="member">🎤 Fabiana — Vocalista (Apoio - Backing Vocal)</div>
+                        <div class="member">🎤 Sarah — Vocalista (Apoio - Backing Vocal)</div>
+                        <div class="member">🎤 Stefânea — Vocalista (Apoio - Backing Vocal)</div>
+                        <div class="member">🎤 Lara — Vocalista (Apoio - Backing Vocal)</div>
+
+                        <div class="member">🥁 Márcio — Músico Instrumental (Bateria)</div>
+                        <div class="member">🎸 Daniel — Músico Instrumental (Guitarra)</div>
+                        <div class="member">🎸 Washington — Músico Instrumental (Baixo)</div>
+                        <div class="member">🎹 Isabella — Músico Instrumental (Teclado)</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 29/01 -->
+            <div
+                class="group-row"
+                data-culto="Culto da Vitória"
+                data-integrantes="luciana ronny nwohaynne débora fabiana igor washington márcio jonatan"
+                data-mes="01"
+            >
+                <div class="group-header" data-bs-toggle="collapse" data-bs-target="#d29">
+                    <div class="culto-header">
+                        <h5>Culto da Vitória</h5>
+                        <div class="info">
+                            <i class="bi bi-calendar-event"></i> 29/01/2026 &nbsp; <i class="bi bi-clock"></i> 19:30
+                        </div>
+                    </div>
+                    <i class="bi bi-chevron-down expand-icon"></i>
+                </div>
+
+                <div class="collapse" id="d29">
+                    <div class="subgroup">
+                        <div class="subgroup-title">Escala</div>
+
+                        <div class="member">🎤 Luciana — Vocalista (Solo - Ministro de Louvor)</div>
+                        <div class="member">🎤 Ronny — Vocalista (Solo - Ministro de Louvor)</div>
+                        <div class="member">🎤 Nwohaynne — Vocalista (Apoio - Backing Vocal)</div>
+                        <div class="member">🎤 Débora — Vocalista (Apoio - Backing Vocal)</div>
+                        <div class="member">🎤 Fabiana — Vocalista (Apoio - Backing Vocal)</div>
+
+                        <div class="member">🥁 Igor — Músico Instrumental (Bateria)</div>
+                        <div class="member">🎸 Washington — Músico Instrumental (Guitarra)</div>
+                        <div class="member">🎸 Márcio — Músico Instrumental (Baixo)</div>
+                        <div class="member">🎹 Jonatan — Músico Instrumental (Teclado)</div>
+                    </div>
+                </div>
+            </div>
+
+        <!-- GRUPOS -->
 
     </div>
-</div>
 
-<!-- 04/01 -->
-<div class="group-row" data-culto="Santa Ceia" data-integrantes="" data-mes="01">
-<div class="group-header" data-bs-toggle="collapse" data-bs-target="#d04">
-    <div class="culto-header">
-        <h5>Santa Ceia</h5>
-        <div class="info">
-            <i class="bi bi-calendar-event"></i> 04/01/2026 &nbsp;
-            <i class="bi bi-clock"></i> 09:30 | 18:30
-        </div>
-    </div>
-    <i class="bi bi-chevron-down expand-icon"></i>
-</div>
-
-<div class="collapse" id="d04">
-    <div class="subgroup">
-        <div class="subgroup-title">Informações</div>
-        Transmissão pelo Youtube
-    </div>
-</div>
-</div>
-
-
-<!-- 06/01 -->
-<div class="group-row"
-     data-culto="Profetizando 2026"
-     data-integrantes="nwohaynne sarah denise isabella lara cristiano ronny igor daniel washington márcio jonatan"
-     data-mes="01">
-
-<div class="group-header" data-bs-toggle="collapse" data-bs-target="#d06">
-    <div class="culto-header">
-        <h5>Profetizando 2026</h5>
-        <div class="info">
-            <i class="bi bi-calendar-event"></i> 06/01/2026 &nbsp;
-            <i class="bi bi-clock"></i> 19:30
-        </div>
-    </div>
-    <i class="bi bi-chevron-down expand-icon"></i>
-</div>
-
-<div class="collapse" id="d06">
-
-<div class="subgroup">
-<div class="subgroup-title">Escala</div>
-
-<div class="member"> 🎤 Nwohaynne, Sarah — Vocalista (Solo - Ministro de Louvor)</div>
-<div class="member"> 🎤 Denise, Isabella, Lara, Cristiano, Ronny — Vocalista (Apoio - Backing Vocal)</div>
-
-<div class="member"> 🥁 Igor — Músico Instrumental (Bateria)</div>
-<div class="member"> 🎸 Daniel — Músico Instrumental (Guitarra)</div>
-<div class="member"> 🎸 Washington — Músico Instrumental (Violão)</div>
-<div class="member"> 🎸 Márcio — Músico Instrumental (Baixo)</div>
-<div class="member"> 🎹 Jonatan — Músico Instrumental (Teclado)</div>
-
-</div>
-
-<div class="subgroup">
-<div class="subgroup-title">Repertório</div>
-
-<div class="song">
-🎵 <strong>Estamos de Pé</strong><br>
-🎙️ Nwohaynne<br>
-▶️ <a href="https://www.youtube.com/live/49H8nvLK09c?si=9rWlh5x8d4jAueeA" target="_blank">Assistir no YouTube</a> - a partir do minuto 22:45
-</div>
-
-<div class="song">
-🎵 <strong>Escape + Nunca Pare de Lutar + Com Muito Louvor</strong><br>
-🎙️ Sarah<br>
-▶️ <a href="https://www.youtube.com/live/svAWjYpSy1A?si=Fq7pc7qAQcl8rN9-" target="_blank">Assistir no YouTube</a> - a partir do minuto 34:00
-</div>
-
-<div class="song observation">
-	<strong> <i class="bi bi-exclamation-circle-fill"></i> Luciana irá cantar separadamente:</strong><br><br>
-
-	🎤 <strong>Todo Poderoso</strong><br>
-	▶️ <a href="https://www.youtube.com/watch?v=jkp2ZO5cQME&list=RDjkp2ZO5cQME&start_radio=1" target="_blank">
-		Assistir no YouTube
-	</a><br><br>
-
-	🎤 <strong>Com Muito Louvor</strong><br>
-	▶️ <a href="https://www.youtube.com/watch?v=yk72I2Jpj78&list=RDyk72I2Jpj78&start_radio=1" target="_blank">
-		Assistir no YouTube
-	</a>
-</div>
-	
-</div>
-
-</div>
-</div>
-
-<!-- 07/01 -->
-<div class="group-row"
-     data-culto="Profetizando 2026"
-     data-integrantes="sérgio isabella stefanea débora fabiana lara denise igor washington jonatan"
-     data-mes="01">
-
-<div class="group-header" data-bs-toggle="collapse" data-bs-target="#d07">
-    <div class="culto-header">
-        <h5>Profetizando 2026</h5>
-        <div class="info">
-            <i class="bi bi-calendar-event"></i> 07/01/2026 &nbsp;
-            <i class="bi bi-clock"></i> 19:30
-        </div>
-    </div>
-    <i class="bi bi-chevron-down expand-icon"></i>
-</div>
-
-<div class="collapse" id="d07">
-
-<div class="subgroup">
-<div class="subgroup-title">Escala</div>
-
-<div class="member"> 🎤 Sérgio, Isabella — Vocalista (Solo - Ministro de Louvor)</div>
-<div class="member"> 🎤 Denise, Débora, Fabiana, Lara, Stefanea — Vocalista (Apoio - Backing Vocal)</div>
-
-<div class="member"> 🥁 Igor — Músico Instrumental (Bateria)</div>
-<div class="member"> 🎸 Sérgio — Músico Instrumental (Guitarra)</div>
-<div class="member"> 🎸 Washington — Músico Instrumental (Violão)</div>
-<div class="member"> 🎸 Daniel — Músico Instrumental (Baixo)</div>
-<div class="member"> 🎹 Jonatan — Músico Instrumental (Teclado)</div>
-
-</div>
-
-<div class="subgroup">
-<div class="subgroup-title">Repertório</div>
-
-<div class="song">
-🎵 <strong>Jesus, Filho de Deus</strong><br>
-🎙️ Sérgio<br>
-▶️ <a href="https://www.youtube.com/watch?v=jz3UGe2tNAE&list=RDjz3UGe2tNAE&start_radio=1" target="_blank">Assistir no YouTube</a> 
-</div>
-
-<div class="song">
-🎵 <strong>Se Manifestará + A Terra Clama + Deixa o Céu Descer (Pai Nosso) + Promessas Antigas ( A Glória desta última casa)</strong><br>
-🎙️ Isabella<br>
-▶️ <a href="https://www.youtube.com/live/49H8nvLK09c?si=9rWlh5x8d4jAueeA" target="_blank">Assistir no YouTube</a> - a partir do minuto 29:00
-</div>
-
-<div class="song observation">
-	<strong> <i class="bi bi-exclamation-circle-fill"></i> Márcio irá cantar separadamente:</strong><br><br>
-
-	🎤 <strong>A Glória Desta Última Casa</strong><br>
-	▶️ <a href="https://www.youtube.com/watch?v=1wXWLyDVn6M" target="_blank">
-		Assistir no YouTube
-	</a><br><br>
-
-	🎤 <strong>Atráves do Louvor</strong><br>
-	▶️ <a href="https://www.youtube.com/watch?v=wwYwr-XARSk" target="_blank">
-		Assistir no YouTube
-	</a>
-</div>
-
-</div>
-
-</div>
-</div>
-
-<!-- 08/01 -->
-<div class="group-row"
-     data-culto="Profetizando 2026"
-     data-integrantes="luciana ronny sérgio sarah débora isabella fabiana igor washington márcio jonatan"
-     data-mes="01">
-
-<div class="group-header" data-bs-toggle="collapse" data-bs-target="#d08">
-    <div class="culto-header">
-        <h5>Profetizando 2026</h5>
-        <div class="info">
-            <i class="bi bi-calendar-event"></i> 08/01/2026 &nbsp;
-            <i class="bi bi-clock"></i> 19:30
-        </div>
-    </div>
-    <i class="bi bi-chevron-down expand-icon"></i>
-</div>
-
-<div class="collapse" id="d08">
-
-<div class="subgroup">
-<div class="subgroup-title">Escala</div>
-
-<div class="member"> 🎤 Luciana, Ronny — Vocalista (Solo - Ministro de Louvor)</div>
-<div class="member"> 🎤 Sarah, Débora, Isabella, Fabiana — Vocalista (Apoio - Backing Vocal)</div>
-
-<div class="member"> 🥁 Igor — Músico Instrumental (Bateria)</div>
-<div class="member"> 🎸 Washington — Músico Instrumental (Guitarra)</div>
-<div class="member"> 🎸 Márcio — Músico Instrumental (Baixo)</div>
-<div class="member"> 🎹 Jonatan — Músico Instrumental (Teclado)</div>
-
-</div>
-
-<div class="subgroup">
-<div class="subgroup-title">Repertório</div>
-
-<div class="song">
-🎵 <strong>Deus de Obras Completas + Jeová Jireh</strong><br>
-🎙️ Luciana<br>
-▶️ <a href="https://youtu.be/1wXWLyDVn6M?si=5QS_OgSTNlSm7QGU" target="_blank">Assistir no YouTube</a>
-</div>
-
-<div class="song">
-🎵 <strong>Toda Terra + Digno de Tudo</strong><br>
-🎙️ Ronny<br>
-▶️ <a href="https://youtu.be/7riqHpWjWV0?si=6voapGT0jgbYnPvn" target="_blank">Assistir no YouTube</a>
-</div>
-
-
-<div class="song observation">
-	<strong> <i class="bi bi-exclamation-circle-fill"></i> Denise irá cantar separadamente:</strong><br><br>
-
-	🎤 <strong>Se Eu Não Te Ouvir</strong><br>
-	▶️ <a href="https://www.youtube.com/watch?v=KXJpP0jd9Lk&list=RDKXJpP0jd9Lk&start_radio=1" target="_blank">
-		Assistir no YouTube
-	</a><br><br>
-
-	🎤 <strong>Eu Sou Teu Pai</strong><br>
-	▶️ <a href="https://www.youtube.com/watch?v=kNJPalON82E&list=RDkNJPalON82E&start_radio=1" target="_blank">
-		Assistir no YouTube
-	</a>
-</div>
-
-
-</div>
-
-</div>
-</div>
-
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
-<!-- jsPDF -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-
-<!-- AutoTable -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
-
-
-<script>
-const i = document.getElementById("filtroIntegrante");
-const c = document.getElementById("filtroCulto");
-const m = document.getElementById("filtroMes");
-const grupos = document.querySelectorAll(".group-row");
-
-function filtrar() {
-    grupos.forEach(g => {
-        const ok =
-            g.dataset.integrantes.toLowerCase().includes(i.value.toLowerCase()) &&
-            g.dataset.culto.toLowerCase().includes(c.value.toLowerCase()) &&
-            (m.value === "" || g.dataset.mes === m.value);
-
-        g.style.display = ok ? "block" : "none";
-    });
-}
-
-i.oninput = filtrar;
-c.oninput = filtrar;
-m.onchange = filtrar;
-</script>
-
-<script>
-function exportarPDF() {
-    const nome = document.getElementById("filtroIntegrante").value.trim();
-    if (!nome) {
-        alert("Digite o nome do integrante para exportar.");
-        return;
-    }
-
-    const nomeLower = nome.toLowerCase();
-    const { jsPDF } = window.jspdf;
-    const doc = new jsPDF();
-
-    doc.setFontSize(13);
-    doc.text(`Escala do(a) Integrante: ${nome}`, 14, 15);
-
-    const rows = [];
-
-    document.querySelectorAll(".group-row").forEach(group => {
-        const culto = group.dataset.culto || "";
-
-        // Data e horário vêm do header
-        const info = group.querySelector(".info")?.innerText || "";
-        const dataMatch = info.match(/\d{2}\/\d{2}\/\d{4}/);
-        const horaMatch = info.match(/\d{2}:\d{2}/);
-
-        const data = dataMatch ? dataMatch[0] : "";
-        const hora = horaMatch ? horaMatch[0] : "";
-
-        group.querySelectorAll(".member").forEach(member => {
-            const texto = member.innerText;
-
-            if (texto.toLowerCase().includes(nomeLower)) {
-
-                // Remove emojis
-                const limpo = texto.replace(/[🎤🎸🥁🎹]/g, "").trim();
-
-                // Divide nome e função
-                const partes = limpo.split("—");
-
-                rows.push([
-                    data,
-                    culto,
-                    hora,
-                    nome,
-                    partes[1]?.trim() || ""
-                ]);
-            }
-        });
-    });
-
-    if (rows.length === 0) {
-        alert("Nenhuma escala encontrada para esse integrante.");
-        return;
-    }
-
-    doc.autoTable({
-        startY: 22,
-        head: [["Data", "Culto", "Horário", "Integrante", "Função"]],
-        body: rows,
-        styles: { fontSize: 9 },
-        headStyles: { fillColor: [13, 27, 98] }
-    });
-
-    doc.save(`escala-${nome.replace(/\s+/g, "-").toLowerCase()}.pdf`);
-}
-</script>
-
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
+
+    <script>
+        // FILTROS
+        const i = document.getElementById("filtroIntegrante");
+        const c = document.getElementById("filtroCulto");
+        const m = document.getElementById("filtroMes");
+        const grupos = document.querySelectorAll(".group-row");
+
+        function filtrar() {
+            grupos.forEach((g) => {
+                const ok =
+                    g.dataset.integrantes.toLowerCase().includes(i.value.toLowerCase()) &&
+                    g.dataset.culto.toLowerCase().includes(c.value.toLowerCase()) &&
+                    (m.value === "" || g.dataset.mes === m.value);
+                g.style.display = ok ? "block" : "none";
+            });
+        }
+
+        i.oninput = filtrar;
+        c.oninput = filtrar;
+        m.onchange = filtrar;
+
+        // EXPORTAR PDF
+        function exportarPDF() {
+            const nome = document.getElementById("filtroIntegrante").value.trim();
+            if (!nome) { alert("Digite o nome do integrante para exportar."); return; }
+            const nomeLower = nome.toLowerCase();
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+            doc.setFontSize(13);
+            doc.text(`Escala do(a) Integrante: ${nome}`, 14, 15);
+            const rows = [];
+
+            document.querySelectorAll(".group-row").forEach((group) => {
+                const culto = group.dataset.culto || "";
+                const info = group.querySelector(".info")?.innerText || "";
+                const dataMatch = info.match(/\d{2}\/\d{2}\/\d{4}/);
+                const todasHoras = info.match(/\d{2}:\d{2}/g);
+                const data = dataMatch ? dataMatch[0] : "";
+
+                group.querySelectorAll(".member").forEach((member) => {
+                    const texto = member.innerText;
+                    if (texto.toLowerCase().includes(nomeLower)) {
+                        const limpo = texto.replace(/[🎤🎸🥁🎹]/g, "").trim();
+                        const partes = limpo.split("—");
+                        const funcao = partes[1]?.trim() || "";
+
+                        const horaMatch = limpo.match(/\((\d{2}:\d{2})\)/);
+                        if (horaMatch) {
+                            rows.push([data, culto, horaMatch[1], nome, funcao]);
+                        } else if (todasHoras && todasHoras.length > 0) {
+                            todasHoras.forEach((hora) => {
+                                rows.push([data, culto, hora, nome, funcao]);
+                            });
+                        } else {
+                            rows.push([data, culto, "", nome, funcao]);
+                        }
+                    }
+                });
+            });
+
+            if (rows.length === 0) { alert("Nenhuma escala encontrada para esse integrante."); return; }
+
+            doc.autoTable({
+                startY: 22,
+                head: [["Data", "Culto", "Horário", "Integrante", "Função"]],
+                body: rows,
+                styles: { fontSize: 9 },
+                headStyles: { fillColor: [13, 27, 98] },
+            });
+
+            doc.save(`escala-${nome.replace(/\s+/g, "-").toLowerCase()}.pdf`);
+        }
+    </script>
 </body>
 </html>
