@@ -915,6 +915,13 @@
 
 		// Todos os cultos listados na página
 		const grupos = document.querySelectorAll(".group-row");
+		
+		// Seleciona automaticamente o mês atual ao carregar a página
+		window.addEventListener("DOMContentLoaded", () => {
+			const mesAtual = String(new Date().getMonth() + 1).padStart(2, "0"); // ex: "03"
+			document.getElementById("filtroMes").value = mesAtual;
+			filtrar(); // aplica o filtro automaticamente
+		});
 
 		// Função que aplica os filtros digitados pelo usuário
 		function filtrar() {
