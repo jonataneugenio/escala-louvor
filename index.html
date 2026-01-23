@@ -67,6 +67,17 @@
                     <select id="filtroMes" class="form-select">
                         <option value="">Todos</option>
                         <option value="01">Janeiro</option>
+						<option value="02">Fevereiro</option>
+						<option value="03">Março</option>
+						<option value="04">Abril</option>
+						<option value="05">Maio</option>
+						<option value="06">Junho</option>
+						<option value="07">Julho</option>
+						<option value="08">Agosto</option>
+						<option value="09">Setembro</option>
+						<option value="10">Outubro</option>
+						<option value="11">Novembro</option>
+						<option value="12">Dezembro</option>
                     </select>
                 </div>
                 <div class="mt-3">
@@ -893,78 +904,183 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.31/jspdf.plugin.autotable.min.js"></script>
 
-    <script>
-        // FILTROS
-        const i = document.getElementById("filtroIntegrante");
-        const c = document.getElementById("filtroCulto");
-        const m = document.getElementById("filtroMes");
-        const grupos = document.querySelectorAll(".group-row");
+	<script>
+		
+		// SEÇÃO DE FILTROS — controla a exibição dos cultos na tela
+		   
+		// Campos de filtro
+		const i = document.getElementById("filtroIntegrante");
+		const c = document.getElementById("filtroCulto");
+		const m = document.getElementById("filtroMes");
 
-        function filtrar() {
-            grupos.forEach((g) => {
-                const ok =
-                    g.dataset.integrantes.toLowerCase().includes(i.value.toLowerCase()) &&
-                    g.dataset.culto.toLowerCase().includes(c.value.toLowerCase()) &&
-                    (m.value === "" || g.dataset.mes === m.value);
-                g.style.display = ok ? "block" : "none";
-            });
-        }
+		// Todos os cultos listados na página
+		const grupos = document.querySelectorAll(".group-row");
 
-        i.oninput = filtrar;
-        c.oninput = filtrar;
-        m.onchange = filtrar;
+		// Função que aplica os filtros digitados pelo usuário
+		function filtrar() {
+			grupos.forEach((g) => {
+				const ok =
+					g.dataset.integrantes.toLowerCase().includes(i.value.toLowerCase()) && // filtra por integrante
+					g.dataset.culto.toLowerCase().includes(c.value.toLowerCase()) &&       // filtra por culto
+					(m.value === "" || g.dataset.mes === m.value);                         // filtra por mês
 
-        // EXPORTAR PDF
-        function exportarPDF() {
-            const nome = document.getElementById("filtroIntegrante").value.trim();
-            if (!nome) { alert("Digite o nome do integrante para exportar."); return; }
-            const nomeLower = nome.toLowerCase();
-            const { jsPDF } = window.jspdf;
-            const doc = new jsPDF();
-            doc.setFontSize(13);
-            doc.text(`Escala do(a) Integrante: ${nome}`, 14, 15);
-            const rows = [];
+				// Exibe ou oculta o culto
+				g.style.display = ok ? "block" : "none";
+			});
+		}
 
-            document.querySelectorAll(".group-row").forEach((group) => {
-                const culto = group.dataset.culto || "";
-                const info = group.querySelector(".info")?.innerText || "";
-                const dataMatch = info.match(/\d{2}\/\d{2}\/\d{4}/);
-                const todasHoras = info.match(/\d{2}:\d{2}/g);
-                const data = dataMatch ? dataMatch[0] : "";
+		// Eventos que disparam o filtro automaticamente
+		i.oninput = filtrar;
+		c.oninput = filtrar;
+		m.onchange = filtrar;
 
-                group.querySelectorAll(".member").forEach((member) => {
-                    const texto = member.innerText;
-                    if (texto.toLowerCase().includes(nomeLower)) {
-                        const limpo = texto.replace(/[🎤🎸🥁🎹]/g, "").trim();
-                        const partes = limpo.split("—");
-                        const funcao = partes[1]?.trim() || "";
+		// EXPORTAÇÃO PARA PDF — gera a escala completa ou filtrada
+		   
+		function exportarPDF() {
+			// Nome digitado no filtro (pode estar vazio)
+			const nome = document.getElementById("filtroIntegrante").value.trim();
+			const nomeLower = nome.toLowerCase();
 
-                        const horaMatch = limpo.match(/\((\d{2}:\d{2})\)/);
-                        if (horaMatch) {
-                            rows.push([data, culto, horaMatch[1], nome, funcao]);
-                        } else if (todasHoras && todasHoras.length > 0) {
-                            todasHoras.forEach((hora) => {
-                                rows.push([data, culto, hora, nome, funcao]);
-                            });
-                        } else {
-                            rows.push([data, culto, "", nome, funcao]);
-                        }
-                    }
-                });
-            });
+			// Instância do PDF
+			const { jsPDF } = window.jspdf;
+			const doc = new jsPDF();
+			doc.setFontSize(13);
 
-            if (rows.length === 0) { alert("Nenhuma escala encontrada para esse integrante."); return; }
+			// Título do PDF muda conforme o filtro
+			if (nome) {
+				doc.text(`Escala do(a) Integrante: ${nome}`, 14, 15);
+			} else {
+				doc.text(`Escala Completa do Ministério de Louvor - 2026`, 14, 15);
+			}
 
-            doc.autoTable({
-                startY: 22,
-                head: [["Data", "Culto", "Horário", "Integrante", "Função"]],
-                body: rows,
-                styles: { fontSize: 9 },
-                headStyles: { fillColor: [13, 27, 98] },
-            });
+			// Array que armazenará todas as linhas da tabela
+			const rows = [];
 
-            doc.save(`escala-${nome.replace(/\s+/g, "-").toLowerCase()}.pdf`);
-        }
-    </script>
+			// Percorre todos os cultos
+			document.querySelectorAll(".group-row").forEach((group) => {
+				const culto = group.dataset.culto || "";
+				const info = group.querySelector(".info")?.innerText || "";
+
+				// Extrai data e horários do culto
+				const dataMatch = info.match(/\d{2}\/\d{2}\/\d{4}/);
+				const horas = info.match(/\d{2}:\d{2}/g) || [];
+				const data = dataMatch ? dataMatch[0] : "";
+
+				// Percorre todos os integrantes do culto
+				group.querySelectorAll(".member").forEach((member) => {
+					// Remove emojis e deixa só texto limpo
+					const textoOriginal = member.innerText.replace(/[🎤🎸🥁🎹]/g, "").trim();
+
+					// Divide nomes e função
+					const partes = textoOriginal.split("—");
+					const nomesBrutos = partes[0].split(","); // pode ter vários nomes no mesmo bloco
+					const funcao = partes[1]?.trim() || "";
+
+					// Verifica se o integrante tem horário próprio no texto
+					const horaMatch = textoOriginal.match(/\((\d{2}:\d{2})\)/);
+					
+					nomesBrutos.forEach((nomeItem) => {
+
+						// Remove horários do nome do integrante
+						const nomeLimpo = nomeItem.replace(/\(\d{2}:\d{2}\)/, "").trim();
+
+						// Extrai horário individual, se existir
+						const horaMatch = textoOriginal.match(/\((\d{2}:\d{2})\)/);
+
+						// CASO 1: Exportar tudo
+						if (!nome) {
+							if (horaMatch) {
+								// Integrante tem horário próprio → usa esse horário
+								rows.push([data, culto, horaMatch[1], nomeLimpo, funcao]);
+							} else {
+								// Integrante sem horário → repetir em TODOS os horários do culto
+								horas.forEach((h) => {
+									rows.push([data, culto, h, nomeLimpo, funcao]);
+								});
+							}
+							return;
+						}
+
+						// CASO 2: Exportar apenas um integrante
+						if (nomeLimpo.toLowerCase().includes(nomeLower)) {
+							if (horaMatch) {
+								rows.push([data, culto, horaMatch[1], nomeLimpo, funcao]);
+							} else {
+								horas.forEach((h) => {
+									rows.push([data, culto, h, nomeLimpo, funcao]);
+								});
+							}
+						}
+
+					});
+
+				});
+			});
+
+			// Se não houver dados, exibe alerta
+			if (rows.length === 0) {
+				alert("Nenhuma informação encontrada para exportar.");
+				return;
+			}
+
+			const ordemFuncoes = {
+				"Vocalista (Solo - Ministro de Louvor)": 1,
+				"Vocalista (Apoio - Backing Vocal)": 2,
+				"Músico Instrumental (Bateria)": 3,
+				"Músico Instrumental (Guitarra)": 4,
+				"Músico Instrumental (Violão)": 5,
+				"Músico Instrumental (Baixo)": 6,
+				"Músico Instrumental (Teclado)": 7
+			};
+
+			// ORDENAÇÃO DAS LINHAS DO PDF - Data → Culto → Horário → Função → Integrante
+			rows.sort((a, b) => {
+				// a[0] = Data
+				// a[1] = Culto
+				// a[2] = Horário
+				// a[3] = Integrante
+				// a[4] = Função
+
+				// Converte datas para YYYY-MM-DD
+				const dataA = a[0].split("/").reverse().join("-");
+				const dataB = b[0].split("/").reverse().join("-");
+
+				// 1. Ordena por data
+				if (dataA !== dataB) return dataA.localeCompare(dataB);
+
+				// 2. Ordena por culto
+				if (a[1] !== b[1]) return a[1].localeCompare(b[1]);
+
+				// 3. Ordena por horário
+				if (a[2] !== b[2]) return a[2].localeCompare(b[2]);
+
+				// 4. Ordena pela função usando a ordem personalizada
+				const ordemA = ordemFuncoes[a[4]] || 999;
+				const ordemB = ordemFuncoes[b[4]] || 999;
+
+				if (ordemA !== ordemB) return ordemA - ordemB;
+
+				// 5. Ordena por nome do integrante
+				return a[3].localeCompare(b[3]);
+			});
+
+			// GERAÇÃO DA TABELA NO PDF
+			doc.autoTable({
+				startY: 22,
+				head: [["Data", "Culto", "Horário", "Integrante", "Função"]],
+				body: rows,
+				styles: { fontSize: 9 },
+				headStyles: { fillColor: [13, 27, 98] },
+			});
+
+			// Nome do arquivo final
+			const nomeArquivo = nome
+				? `escala-${nome.replace(/\s+/g, "-").toLowerCase()}.pdf`
+				: `escala-completa.pdf`;
+
+			doc.save(nomeArquivo);
+		}
+	</script>
+
 </body>
 </html>
