@@ -4721,13 +4721,21 @@
 
             // Todos os cultos listados na página
             const grupos = document.querySelectorAll(".group-row");
+			
+			// Seleciona automaticamente o mês atual ao carregar a página
+			window.addEventListener("DOMContentLoaded", () => {
+				const params = new URLSearchParams(window.location.search);
+				const mesParam = params.get("mes");
 
-            // Seleciona automaticamente o mês atual ao carregar a página
-            window.addEventListener("DOMContentLoaded", () => {
-                const mesAtual = String(new Date().getMonth() + 1).padStart(2, "0"); // ex: "03"
-                document.getElementById("filtroMes").value = mesAtual;
-                filtrar(); // aplica o filtro automaticamente
-            });
+				// Só define o mês atual se NÃO houver parâmetro na URL
+				if (!mesParam) {
+					const mesAtual = String(new Date().getMonth() + 1).padStart(2, "0");
+					document.getElementById("filtroMes").value = mesAtual;
+				}
+
+				filtrar();
+			});
+
 
             // Função que aplica os filtros digitados pelo usuário
             function filtrar() {
@@ -4741,12 +4749,67 @@
                     g.style.display = ok ? "block" : "none";
                 });
             }
+			
+			
 
             // Eventos que disparam o filtro automaticamente
             i.oninput = filtrar;
             c.oninput = filtrar;
             m.onchange = filtrar;
 
+			
+			// Função que aplica os filtros pelo parametros na URL
+			window.addEventListener("load", function () {
+				const params = new URLSearchParams(window.location.search);
+
+				const cultoParam = params.get("culto");
+				const mesParam = params.get("mes");
+				const integranteParam = params.get("integrante");
+
+				// 1. Preenche o filtro de integrante
+				if (integranteParam) {
+					const campoIntegrante = document.querySelector("#filtroIntegrante");
+					if (campoIntegrante) {
+						campoIntegrante.value = integranteParam;
+						campoIntegrante.dispatchEvent(new Event("input"));
+					}
+				}
+
+				// 2. Preenche o filtro de culto
+				if (cultoParam) {
+					const campoCulto = document.querySelector("#filtroCulto");
+					if (campoCulto) {
+						campoCulto.value = cultoParam;
+						campoCulto.dispatchEvent(new Event("input"));
+					}
+				}
+
+				// 3. Preenche o filtro de mês (somente se veio pela URL)
+				if (mesParam) {
+					const campoMes = document.querySelector("#filtroMes");
+					if (campoMes) {
+						campoMes.value = mesParam;
+						campoMes.dispatchEvent(new Event("change"));
+					}
+				}
+
+				// 4. Expandir o bloco correspondente (culto + mês)
+				setTimeout(() => {
+					if (cultoParam && mesParam) {
+						const seletor = `.group-row[data-culto*="${cultoParam}"][data-mes="${mesParam}"]`;
+						const bloco = document.querySelector(seletor);
+
+						if (bloco) {
+							const header = bloco.querySelector(".group-header");
+							if (header) header.click();
+
+							bloco.scrollIntoView({ behavior: "smooth", block: "start" });
+						}
+					}
+				}, 400);
+			});
+
+			
             // EXPORTAÇÃO PARA PDF — gera a escala completa ou filtrada
 
             function exportarPDF() {
@@ -4947,7 +5010,7 @@
 
                 doc.save(nomeArquivo);
             }
+			
         </script>
-		
     </body>
 </html>
